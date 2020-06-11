@@ -1,12 +1,18 @@
 #Script that parses "could" lines to establish underlinked connections from host/port and port/port connections.
 
-#import bash file iblinkinfo.out here For now, use demotxt until I copy file to my system
+list = []  #initializing list to parse easier
 
-input_file = open('demoText.txt', 'r')
-Lines = input_file.readlines()
+#Builds a list with the log file
+with open('demoText.txt', 'rt') as f:
+    for line in f:
+        list.append(line.rstrip('\n'))
 
-print(Lines)
+print(list)
 
-#closes bash file
-input_file.close() 
- 
+#need to parse the Switches first
+
+#After that, parse for the "Could" lines
+
+
+
+
