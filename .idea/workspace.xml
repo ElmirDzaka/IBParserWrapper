@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6b55cb8-9ba4-44a3-89e2-c2908962c2cf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonScript/PythonWrapperScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/PythonWrapperScript.py" afterDir="false" />
-    </list>
+    <list default="true" id="c6b55cb8-9ba4-44a3-89e2-c2908962c2cf" name="Default Changelist" comment="Parsing Could Lines Using Regex" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,8 +81,16 @@
       <workItem from="1591906157163" duration="1385000" />
       <workItem from="1591909495107" duration="755000" />
       <workItem from="1591914239905" duration="3401000" />
-      <workItem from="1592261510341" duration="660000" />
+      <workItem from="1592261510341" duration="979000" />
     </task>
+    <task id="LOCAL-00001" summary="Parsing Could Lines Using Regex">
+      <created>1592262486940</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592262486940</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +107,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Parsing Could Lines Using Regex" />
+    <option name="LAST_COMMIT_MESSAGE" value="Parsing Could Lines Using Regex" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591908072476">
