@@ -1,17 +1,25 @@
 #Script that parses "could" lines to establish underlinked connections from host/port and port/port connections.
+import re
 
 list = []  #initializing list to parse easier
+linnum = 0
+pattern = re.compile("count", re.IGNORECASE)
 
-#Builds a list with the log file
+#Uses Regex to parse file as txt to sort out lines w/ "Could"
 with open('demoText.txt', 'rt') as f:
     for line in f:
-        list.append(line.rstrip('\n'))
+        linnum+=1
+        if pattern.search(line) != None:
+            list.append((linnum, line.rstrip('\n')))
 
-print(list)
+#prints out which line contains "Could" along with num of GB that it could be. Probably will switch to how many it is reading then
+for numCount in list:
+    print("Line" + str(numCount[0] + ": " + numCount[1]))
 
-#need to parse the Switches first
 
-#After that, parse for the "Could" lines
+#Still need to parse the Switches and print out which connection it is
+
+
 
 
 
