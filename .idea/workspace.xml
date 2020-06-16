@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6b55cb8-9ba4-44a3-89e2-c2908962c2cf" name="Default Changelist" comment="Parsing Could Lines Using Regex">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonScript/PythonWrapperScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/PythonWrapperScript.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonScript/demoText.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/demoText.txt" afterDir="false" />
-    </list>
+    <list default="true" id="c6b55cb8-9ba4-44a3-89e2-c2908962c2cf" name="Default Changelist" comment="Parsing Could Lines Using Regex" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +82,7 @@
       <workItem from="1591909495107" duration="755000" />
       <workItem from="1591914239905" duration="3401000" />
       <workItem from="1592261510341" duration="1098000" />
-      <workItem from="1592342336464" duration="1621000" />
+      <workItem from="1592342336464" duration="1747000" />
     </task>
     <task id="LOCAL-00001" summary="Parsing Could Lines Using Regex">
       <created>1592262486940</created>
@@ -122,22 +118,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591908072476" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1592343942400">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1592344084204">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1592343942400" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1592343942400">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1592344084204" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1592344084204">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.center/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1592343942400" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1592343942400">
+    <state width="1877" height="281" key="GridCell.Tab.0.center/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1592344084204" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1592344084204">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.left/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1592343942400" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1592343942400">
+    <state width="1877" height="281" key="GridCell.Tab.0.left/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1592344084204" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1592344084204">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.right/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1592343942400" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1592344084204" />
     <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591917383597">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
