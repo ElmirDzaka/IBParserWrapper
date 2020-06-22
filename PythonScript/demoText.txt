@@ -4,7 +4,7 @@ filler
 filler
 filler
 Switch
-Could
+Could be 14.0 Gbps
 filler
 filler
 could
