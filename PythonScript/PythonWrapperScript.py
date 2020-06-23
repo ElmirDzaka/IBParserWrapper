@@ -6,6 +6,8 @@ linnum = 0
 # Initializing variables Using Regex to parse file as txt to sort out lines w/ "Could" and "Switch"
 rx_Could = re.compile(r"could\s*be\s*(?P<linkspeed>.+)", re.IGNORECASE | re.VERBOSE)
 rx_Switch = re.compile(r"^Switch", re.IGNORECASE | re.VERBOSE)
+#rx_Inverse=re.compile((r""))  #regex expression that will find inverse switch connection
+
 
 #opens log file, and puts log into a list to be able to parse easier
 #still needs to seperate switches and look for Coulds seperately using initializing variable
@@ -13,7 +15,12 @@ with open('demoText.txt', 'rt') as f:
     for line in f:
         linnum += 1
         if rx_Switch.search(line) is not None:
-            list.append((linnum, line.rstrip('\n')))
+            while line != rx_Switch:   #loops each switch independently
+                list.append((linnum, line.rstrip('\n')))
+                if rx_Could is not None:
+                    list.append((linnum, line.rstrip('\n')))
+                    
+
 
 #Next, find links by parsing recipricol links
 
