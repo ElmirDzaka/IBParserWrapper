@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c6b55cb8-9ba4-44a3-89e2-c2908962c2cf" name="Default Changelist" comment="Parsing Could Lines Using Regex">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PythonScript/PythonWrapperScript.py" beforeDir="false" afterPath="$PROJECT_DIR$/PythonScript/PythonWrapperScript.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +88,7 @@
       <workItem from="1592511635871" duration="1605000" />
       <workItem from="1592513251231" duration="227000" />
       <workItem from="1592852024114" duration="4183000" />
-      <workItem from="1592931505160" duration="1778000" />
+      <workItem from="1592931505160" duration="3643000" />
     </task>
     <task id="LOCAL-00001" summary="Parsing Could Lines Using Regex">
       <created>1592262486940</created>
