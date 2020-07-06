@@ -4,9 +4,28 @@ import re
 list = []  # initializing list to parse easier
 linnum = 0
 # Initializing variables Using Regex to parse file as txt to sort out lines w/ "Could" and "Switch"
-rx_Could = re.compile(r"could\s*be\s*(?P<linkspeed>.+)", re.IGNORECASE | re.VERBOSE)
-rx_Switch = re.compile(r"^Switch", re.IGNORECASE | re.VERBOSE)
-rx_Host = re.compile(r"^CA", re.VERBOSE | re.IGNORECASE)
+
+#Parses text file and groups all information needed for table into subgroups
+rx_ParseCould = re.compile(r'''^
+(?P<paragraphnumber>paragraph.+?(?=:))
+(?P<ports>.+?(?=4X))
+(?P<currentlinkspeed>.+?(?=>))
+(?P<secondgroupofports>.+?(?=]))
+(?P<someinfo>.+(?=Could\sbe))
+(?P<desiredlinkspeed>.+(?=))
+''', re.IGNORECASE | re.VERBOSE)
+
+#Parses for the Host Name
+rx_Host = re.compile(r'''^
+(?P<HostName>.+?(?:CA:)\s\S\S\S\S.)''', re.IGNORECASE | re.VERBOSE)
+
+#Parses for the Switch Name
+rx_Switch = re.compile(r'''^
+(?P<SwitchName>.+?(?:Switch:\s..................))''', re.IGNORECASE | re.VERBOSE)
+
+Switch_Parser = re.compile(r"^Switch", re.IGNORECASE | re.VERBOSE)
+Host_Parser = re.compile(r"^CA", re.VERBOSE | re.IGNORECASE)
+
 append_next = False
 switch_append_next = False
 #rx_Inverse=re.compile((r""))  #regex expression that will find inverse switch connection
@@ -19,14 +38,14 @@ with open('iblinkinfo.out', 'rt') as f:
 
         linnum += 1
 
-        if rx_Host.search(line) is not None:
+        if Host_Parser.search(line) is not None:
             append_next = True
             if switch_append_next == True:
                 linnum += 1
             switch_append_next = False
         else:
             append_next = False
-        if rx_Switch.search(line) is not None:
+        if Switch_Parser.search(line) is not None:
             switch_append_next = True
             linnum += 1
 
@@ -41,14 +60,16 @@ with open('iblinkinfo.out', 'rt') as f:
             list.append((linnum, line.rstrip('\n')))
 
 
+
+# prints out list with each group of switches and hosts being grouped individually
+    for numCount in list:
+        print("paragraph " + str(numCount[0]) + ": " + numCount[1])
+
+#TODO
+
 #Next, find links by parsing recipricol links
 
-#After that, make table for email using HTML
+#After that, print table using subgroups already defined
 
+#put into email and done!
 
-
-# prints out which line contains "Could" along with num of GB that it could be. Probably will switch to how many it is reading then
-for numCount in list:
-    print("paragraph " + str(numCount[0]) + ": " + numCount[1])
-
-# Still need to parse the Switches and print out which connection it is
