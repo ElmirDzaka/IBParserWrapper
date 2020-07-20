@@ -1,4 +1,5 @@
 # Script that parses "could" lines to establish underlinked connections from host/port and port/port connections.
+import pandas as pd
 import re
 
 list = []  # initializing list to parse easier
@@ -8,16 +9,16 @@ linnum = 0
 #Parses text file and groups all information needed for table into subgroups
 rx_ParseCould = re.compile(r'''^
 (?P<paragraphnumber>paragraph.+?(?=:))
-(?P<ports>.+?(?=4X))
+(?P<port1>.+?(?=4X))
 (?P<currentlinkspeed>.+?(?=>))
-(?P<secondgroupofports>.+?(?=]))
-(?P<someinfo>.+(?=Could\sbe))
+(?P<port2>.+?(?=]))
+(?P<address>.+(?=Could\sbe))
 (?P<desiredlinkspeed>.+(?=))
 ''', re.IGNORECASE | re.VERBOSE)
 
 #Parses for the Host Name
 rx_Host = re.compile(r'''^
-(?P<HostName>.+?(?:CA:)\s\S\S\S\S.)''', re.IGNORECASE | re.VERBOSE)
+(?P<HostName>.+?(?:CA:).+)''', re.IGNORECASE | re.VERBOSE)
 
 #Parses for the Switch Name
 rx_Switch = re.compile(r'''^
@@ -67,7 +68,11 @@ with open('iblinkinfo.out', 'rt') as f:
 
 #TODO
 
-#Next, find links by parsing recipricol links
+#data =
+
+df = pd.DataFrame(columns = ['Switch', 'Host', 'Port1', 'Port2', 'CurrentLinkSpeed', 'DesiredLinkSpeed', 'Address'])
+print(df)
+
 
 #After that, print table using subgroups already defined
 
