@@ -68,7 +68,13 @@ with open('iblinkinfo.out', 'rt') as f:
 
 #TODO
 
-#data =
+
+#loop that organizes data into Dataframe
+#data = (()
+
+
+
+
 
 df = pd.DataFrame(columns = ['Switch', 'Host', 'Port1', 'Port2', 'CurrentLinkSpeed', 'DesiredLinkSpeed', 'Address'])
 print(df)
