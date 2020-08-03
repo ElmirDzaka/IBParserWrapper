@@ -70,17 +70,18 @@ with open('iblinkinfo.out', 'rt') as f:
 
 
 #loop that organizes data into Dataframe
-#data = (()
+data = {'Local Device': ['SwitchName'],
+        'Local Port': ['port1'],
+        'CurrentLinkSpeed': ['currentlinkspeed'],
+        'DesiredLinkSpeed': ['desiredlinkspeed'],
+        'Remote Device': ['address'],
+        'Remote Port': ['port2']
+        }
 
 
-
-
-
-df = pd.DataFrame(columns = ['Switch', 'Host', 'Port1', 'Port2', 'CurrentLinkSpeed', 'DesiredLinkSpeed', 'Address'])
+df = pd.DataFrame(data, columns=['Local Device', 'Local Port', 'CurrentLinkSpeed', 'DesiredLinkSpeed', 'Remote Device', 'Remote Port'])
 print(df)
 
-
-#After that, print table using subgroups already defined
 
 #put into email and done!
 
