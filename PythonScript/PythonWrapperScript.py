@@ -22,7 +22,7 @@ rx_Host = re.compile(r'''^
 
 #Parses for the Switch Name
 rx_Switch = re.compile(r'''^
-(?P<SwitchName>.+?(?:Switch:\s..................))''', re.IGNORECASE | re.VERBOSE)
+(?P<SwitchName>.+?(?:Switch:.+))''', re.IGNORECASE | re.VERBOSE)
 
 Switch_Parser = re.compile(r"^Switch", re.IGNORECASE | re.VERBOSE)
 Host_Parser = re.compile(r"^CA", re.VERBOSE | re.IGNORECASE)
@@ -63,25 +63,29 @@ with open('iblinkinfo.out', 'rt') as f:
 
 
 # prints out list with each group of switches and hosts being grouped individually
-    for numCount in list:
-        print("paragraph " + str(numCount[0]) + ": " + numCount[1])
+    #for numCount in list:
+     #   print("paragraph " + str(numCount[0]) + ": " + numCount[1])
 
 #TODO
 
-
-#loop that organizes data into Dataframe
-data = {'Local Device': ['SwitchName'],
-        'Local Port': ['port1'],
-        'CurrentLinkSpeed': ['currentlinkspeed'],
-        'DesiredLinkSpeed': ['desiredlinkspeed'],
-        'Remote Device': ['address'],
-        'Remote Port': ['port2']
-        }
+#loop that organizes regex subgroups into single variable
+for element in list:
+    sub_groups = re.search(rx_ParseCould, element)
 
 
-df = pd.DataFrame(data, columns=['Local Device', 'Local Port', 'CurrentLinkSpeed', 'DesiredLinkSpeed', 'Remote Device', 'Remote Port'])
+#df = pd.DataFrame(list, columns=['Local Device', 'Local Port', 'CurrentLinkSpeed', 'DesiredLinkSpeed', 'Remote Device', 'Remote Port'])
+
+#building DataFramme / Table for email
+df = pd.DataFrame(list, columns=['paragraphnumber', 'data'])
+df['Local Port'] = df['data'].str.extract(sub_groups.group('port1'))
+df['CurrentLinkSpeed'] = df['data'].str.extract(sub_groups.group('currentlinkspeed'))
+df['DesiredLinkSpeed'] = df['data'].str.extract(sub_groups.group('desiredlinkspeed'))
+df['Remote Device'] = df['data'].str.extract(sub_groups.group('address'))
+df['Remote Port'] = df['data'].str.extract(sub_groups.group('port2'))
 print(df)
 
+#Be prepared to have edge case where remote connection isnt picked up as a connection to the local host
+#For now, just have notice considering no examples exist
 
 #put into email and done!
 
