@@ -80,6 +80,7 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', None)
 pd.set_option('display.max_colwidth', None)
 print(df)
+df.to_csv(r'C:\Users\Elmir Dzaka\Documents\Table.csv', index = False)
 
 #Be prepared to have edge case where remote connection isnt picked up as a connection to the local host
 #For now, just have notice considering no examples exist
