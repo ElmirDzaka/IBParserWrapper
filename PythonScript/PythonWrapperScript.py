@@ -2,35 +2,16 @@
 import pandas as pd
 import re
 
-list = []  # initializing list to parse easier
+# Initializing list and index to sort all switch/host info as the same index. Makes it easier to parse data
+list = []
 linnum = 0
-# Initializing variables Using Regex to parse file as txt to sort out lines w/ "Could" and "Switch"
 
-#Parses text file and groups all information needed for table into subgroups
-rx_ParseCould = re.compile(r'''^
-(?P<paragraphnumber>paragraph.+?(?=:))
-(?P<port1>.+?(?=4X))
-(?P<currentlinkspeed>.+?(?=>))
-(?P<port2>.+?(?=]))
-(?P<address>.+(?=Could\sbe))
-(?P<desiredlinkspeed>.+(?=))
-''', re.IGNORECASE | re.VERBOSE)
-
-#Parses for the Host Name
-rx_Host = re.compile(r'''^
-(?P<HostName>.+?(?:CA:).+)''', re.IGNORECASE | re.VERBOSE)
-
-#Parses for the Switch Name
-rx_Switch = re.compile(r'''^
-(?P<SwitchName>.+?(?:Switch:.+))''', re.IGNORECASE | re.VERBOSE)
-
+#orginizes switch and host lines into blocks or "paragraphs"
 Switch_Parser = re.compile(r"^Switch", re.IGNORECASE | re.VERBOSE)
 Host_Parser = re.compile(r"^CA", re.VERBOSE | re.IGNORECASE)
 
 append_next = False
 switch_append_next = False
-#rx_Inverse=re.compile((r""))  #regex expression that will find inverse switch connection
-
 
 #opens log file, and puts log into a list to be able to parse easier
 #still needs to seperate switches and look for Coulds seperately using initializing variable
@@ -62,26 +43,42 @@ with open('iblinkinfo.out', 'rt') as f:
 
 
 
-# prints out list with each group of switches and hosts being grouped individually
-    #for numCount in list:
-     #   print("paragraph " + str(numCount[0]) + ": " + numCount[1])
+#initializes data into lists to seperate bad connections from good ones
+errors = []
+hostlines = []
+hosts = []
 
-#TODO
 
-#loop that organizes regex subgroups into single variable
+#loops that return only bad connections as the list called "errors"
+#seperate list needed for Local Device since this information is not shown on the same line as the broken connection.
+#This is why we needed to append the data into list "list" above so that we could find the local device line
+#which is now on the same index as the line w/ bad connection
 for element in list:
-    sub_groups = re.search(rx_ParseCould, element)
+    if "Could" in element[1]:
+        errors.append(element[1])
+        hostlines.append(element[0])
+for index in hostlines:
+    for numcount in list:
+        if numcount[0] == index:
+            hosts.append(numcount[1])
+            break
 
-
-#df = pd.DataFrame(list, columns=['Local Device', 'Local Port', 'CurrentLinkSpeed', 'DesiredLinkSpeed', 'Remote Device', 'Remote Port'])
 
 #building DataFramme / Table for email
-df = pd.DataFrame(list, columns=['paragraphnumber', 'data'])
-df['Local Port'] = df['data'].str.extract(sub_groups.group('port1'))
-df['CurrentLinkSpeed'] = df['data'].str.extract(sub_groups.group('currentlinkspeed'))
-df['DesiredLinkSpeed'] = df['data'].str.extract(sub_groups.group('desiredlinkspeed'))
-df['Remote Device'] = df['data'].str.extract(sub_groups.group('address'))
-df['Remote Port'] = df['data'].str.extract(sub_groups.group('port2'))
+df = pd.DataFrame(errors, columns=['Errors'])
+df['Local Device'] = hosts
+df['Local Port'] = df['Errors'].str.extract(r"(.\d\[...)")
+df['CurrentLinkSpeed'] = df['Errors'].str.extract(r"(........Gbps............................)")
+df['DesiredLinkSpeed'] = df['Errors'].str.extract(r"(..Could be .............)")
+df['Remote Device'] = df['Errors'].str.extract(r"(................................(?=...Could))")
+df['Remote Port'] = df['Errors'].str.extract(r"(.......(?=\"))")
+df.drop('Errors', axis=1, inplace=True)
+
+#allows entire table to be shown
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', None)
+pd.set_option('display.max_colwidth', None)
 print(df)
 
 #Be prepared to have edge case where remote connection isnt picked up as a connection to the local host
