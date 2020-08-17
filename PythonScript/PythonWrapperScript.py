@@ -1,6 +1,8 @@
 # Script that parses "could" lines to establish underlinked connections from host/port and port/port connections.
 import pandas as pd
+import numpy as np
 import re
+
 
 # Initializing list and index to sort all switch/host info as the same index. Makes it easier to parse data
 list = []
@@ -42,7 +44,6 @@ with open('iblinkinfo.out', 'rt') as f:
             list.append((linnum, line.rstrip('\n')))
 
 
-
 #initializes data into lists to seperate bad connections from good ones
 errors = []
 hostlines = []
@@ -63,7 +64,6 @@ for index in hostlines:
             hosts.append(numcount[1])
             break
 
-
 #building DataFramme / Table for email
 df = pd.DataFrame(errors, columns=['Errors'])
 df['Local Device'] = hosts
@@ -73,6 +73,28 @@ df['DesiredLinkSpeed'] = df['Errors'].str.extract(r"(..Could be .............)")
 df['Remote Device'] = df['Errors'].str.extract(r"(................................(?=...Could))")
 df['Remote Port'] = df['Errors'].str.extract(r"(.......(?=\"))")
 df.drop('Errors', axis=1, inplace=True)
+
+palindrome_local = []
+palindrome_remote = []
+duplicates = []
+
+#drops duplicate connections from dataframe
+for index, row in df.head().iterrows():
+    for j in range(len(palindrome_local)):
+        if row['Remote Port'].strip() == palindrome_local[j].strip() and row['Local Port'].strip() == palindrome_remote[j].strip():
+            duplicates.append(index)
+    palindrome_local.append(row['Local Port'])
+    palindrome_remote.append(row['Remote Port'])
+
+df.drop(duplicates , axis=0, inplace=True)
+
+
+
+#highlights current link speed
+def color_table(col):
+    if "Gbps" in col:
+        color = 'red'
+df.style.apply(color_table,  axis=0)
 
 #allows entire table to be shown
 pd.set_option('display.max_rows', None)
