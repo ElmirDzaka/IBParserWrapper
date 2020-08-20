@@ -64,13 +64,14 @@ for index in hostlines:
             hosts.append(numcount[1])
             break
 
+
 #building DataFramme / Table for email
 df = pd.DataFrame(errors, columns=['Errors'])
 df['Local Device:'] = hosts
 df['Local Port'] = df['Errors'].str.extract(r"(.\d\[...)")
-df['CurrentLinkSpeed'] = df['Errors'].str.extract(r"(.........Gbps............................)")
-df['DesiredLinkSpeed'] = df['Errors'].str.extract(r"(..Could be .............)")
-df['Remote Device:'] = df['Errors'].str.extract(r"(................................(?=...Could))")
+df['CurrentLinkSpeed'] = df['Errors'].str.extract(r"(.......Gbps........................)")
+df['DesiredLinkSpeed'] = df['Errors'].str.extract(r"(Could be ............)")
+df['Remote Device:'] = df['Errors'].str.extract(r"(...............................(?=...Could))")
 df['Remote Port'] = df['Errors'].str.extract(r"(.......(?=\"))")
 df.drop('Errors', axis=1, inplace=True)
 
