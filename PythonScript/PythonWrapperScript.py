@@ -67,12 +67,13 @@ for index in hostlines:
 
 #building DataFramme / Table for email
 df = pd.DataFrame(errors, columns=['Errors'])
-df['Local Device:'] = hosts
-df['Local Port'] = df['Errors'].str.extract(r"(.\d\[...)")
+df['LocalDevice:'] = hosts
+df['LocalPort'] = df['Errors'].str.extract(r"(.\d\[...)")
+#df['Local Port'] = df['Errors'].str.extract(r"(.\d(?=\[))")
 df['CurrentLinkSpeed'] = df['Errors'].str.extract(r"(.......Gbps........................)")
 df['DesiredLinkSpeed'] = df['Errors'].str.extract(r"(Could be ............)")
-df['Remote Device:'] = df['Errors'].str.extract(r"(...............................(?=...Could))")
-df['Remote Port'] = df['Errors'].str.extract(r"(.......(?=\"))")
+df['RemoteDevice:'] = df['Errors'].str.extract(r"(...........................(?=/U1)...)")
+df['RemotePort'] = df['Errors'].str.extract(r"(.......(?=\"))")
 df.drop('Errors', axis=1, inplace=True)
 
 palindrome_local = []
@@ -82,10 +83,10 @@ duplicates = []
 #drops duplicate connections from dataframe
 for index, row in df.head().iterrows():
     for j in range(len(palindrome_local)):
-        if row['Remote Port'].strip() == palindrome_local[j].strip() and row['Local Port'].strip() == palindrome_remote[j].strip():
+        if row['RemotePort'].strip() == palindrome_local[j].strip() and row['LocalPort'].strip() == palindrome_remote[j].strip():
             duplicates.append(index)
-    palindrome_local.append(row['Local Port'])
-    palindrome_remote.append(row['Remote Port'])
+    palindrome_local.append(row['LocalPort'])
+    palindrome_remote.append(row['RemotePort'])
 
 df.drop(duplicates , axis=0, inplace=True)
 
@@ -95,6 +96,8 @@ df.drop(duplicates , axis=0, inplace=True)
 def color_table(col):
     if "Gbps" in col:
         color = 'red'
+    if "Could" in  col:
+        color = "blue"
 df.style.apply(color_table,  axis=0)
 
 #allows entire table to be shown
