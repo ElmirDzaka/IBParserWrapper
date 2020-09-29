@@ -3263,7 +3263,7 @@ CA: kp032 mlx4_0:
 CA: kp031 mlx4_0:
       0x0002c903001cb6f1     66    1[  ] ==( 4X       14.0625 Gbps Active/  LinkUp)==>      23    3[  ] "MF0;ddc-ib-tor-s10-2:SX6036/U1" ( )
 CA: kp030 mlx4_0:
-      0x0002c903001cb771     85    1[  ] ==( 4X       14.0625 Gbps Active/  LinkUp)==>      23    2[  ] "MF0;ddc-ib-tor-s10-2:SX6036/U1" ( )
+      0x0002c903001cb771     85    1[   ]==( 4X       14.0625 Gbps Active/  LinkUp)==>      23    2[  ] "MF0;ddc-ib-tor-s10-2:SX6036/U1" ( )
 CA: kp029 mlx4_0:
       0x0002c903001cb701     87    1[  ] ==( 4X       14.0625 Gbps Active/  LinkUp)==>      23    1[  ] "MF0;ddc-ib-tor-s10-2:SX6036/U1" ( )
 CA: kp028 mlx4_0:
