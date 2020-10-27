@@ -69,26 +69,29 @@ for index in hostlines:
 df = pd.DataFrame(errors, columns=['Errors'])
 df['LocalDevice:'] = hosts
 df['LocalDevice:'] = df['LocalDevice:'].str.extract(r"(...............................\Z)")
+df['LocalDevice:'] = df['LocalDevice:'].str.replace(r"\:\S*",'').str.replace(' ', '')
 df['LocalPort'] = df['Errors'].str.extract(r"(.\d\[...)")
-df['LocalPort'] = df['Errors'].str.extract(r"(.\d(?=\[))")
+df['LocalPort'] = df['LocalPort'].str.replace(' ','').str.replace('[','').str.replace(']','')
 df['CurrentLinkSpeed(4X)'] = df['Errors'].str.extract(r"(.......Gbps........................)")
 df['DesiredLinkSpeed(4X)'] = df['Errors'].str.extract(r"(Could be ............)")
 df['RemoteDevice:'] = df['Errors'].str.extract(r"(...........................(?=/U1)...)")
+df['RemoteDevice:'] = df['RemoteDevice:'].str.replace(r"\:\S*",'').str.replace(' ', '')
 df['RemotePort'] = df['Errors'].str.extract(r"(.......(?=\"))")
-df['RemotePort'] = df['Errors'].str.extract(r"(.\d(?=\[))")
+df['RemotePort'] = df['RemotePort'].str.replace(' ','').str.replace('[','').str.replace(']','')
 df.drop('Errors', axis=1, inplace=True)
 
 palindrome_local = []
 palindrome_remote = []
 duplicates = []
 
+
 #drops duplicate connections from dataframe
-#for index, row in df.head().iterrows():
-#    for j in range(len(palindrome_local)):
- #       if row['RemotePort'].strip() == palindrome_local[j].strip() and row['LocalPort'].strip() == palindrome_remote[j].strip():
- #           duplicates.append(index)
-  #  palindrome_local.append(row['LocalPort'])
-  #  palindrome_remote.append(row['RemotePort'])
+for index, row in df.head().iterrows():
+    for j in range(len(palindrome_local)):
+        if row['RemotePort'].strip() == palindrome_local[j].strip() and row['LocalPort'].strip() == palindrome_remote[j].strip():
+            duplicates.append(index)
+    palindrome_local.append(row['LocalPort'])
+    palindrome_remote.append(row['RemotePort'])
 
 df.drop(duplicates , axis=0, inplace=True)
 
