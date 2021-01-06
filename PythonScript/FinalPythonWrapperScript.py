@@ -65,15 +65,17 @@ for index in hostlines:
 df = pd.DataFrame(errors, columns=['Errors'])
 df['LocalDevice:'] = hosts
 df['LocalDevice:'] = df['LocalDevice:'].str.extract(r"(\S*\s*\S*\s*\S*)")
-#df['LocalDevice:'] = df['LocalDevice:'].str.replace(r"\:\S*", '').str.replace(' ', '').str.replace('MF0;', '')
 df['LocalDevice:'] = df['LocalDevice:'].str.replace('CA:', '').str.replace('Switch:', '').str.replace(':', ' ').str.replace(r"((0x)\S*)", '').str.replace('MF0;', '').str.replace(r"([(SX)|(MS)]\S*)", '').str.replace(r"(^\s*)", "")
+
 df['LocalPort'] = df['Errors'].str.extract(r"(.\d\[...)")
 df['LocalPort'] = df['LocalPort'].str.replace(" ", "").str.replace('[', '').str.replace(']', '')
+
 df['CurrentLinkSpeed(4X)'] = df['Errors'].str.extract(r"(\S*\d*\s*Gbps\s*\S*\s*\S*)")
 df['DesiredLinkSpeed(4X)'] = df['Errors'].str.extract(r"(Could be \d*\S*\d*\s*....)")
-#df['RemoteDevice:'] = df['Errors'].str.extract(r"(...........................(?=/U1)...)")
+
 df['RemoteDevice:'] = df['Errors'].str.extract(r"(ddc\S*|\S*\smlx\S*)")
 df['RemoteDevice:'] = df['RemoteDevice:'].str.replace(r"\:\S*", '').str.replace(' ', '')
+
 df['RemotePort'] = df['Errors'].str.extract(r"(.......(?=\"))")
 df['RemotePort'] = df['RemotePort'].str.replace(' ', '').str.replace('[', '').str.replace(']', '')
 df.drop('Errors', axis=1, inplace=True)
@@ -92,20 +94,11 @@ for index, row in df.iterrows():
     else:
         palindrome_dictionary.add((row['LocalPort'], row['RemotePort']))
         palindrome_dictionary.add((row['RemotePort'], row['LocalPort']))
-    #palindrome_local.append(row['LocalPort'])
-    #palindrome_remote.append(row['RemotePort'])
-
-
-#for j in range(len(palindrome_local)):
-  #  if row['RemotePort'] == palindrome_local[j] and row['LocalPort'] == palindrome_remote[j]:
-     #   duplicates.append(index)
 
 df.drop(duplicates, axis=0, inplace=True)
 
 #reordering index after dropping rows
-new_index = np.arange(len(df))
-print(new_index)
-df.set_index(new_index)
+df.reset_index(drop=True, inplace=True)
 
 # allows entire table to be shown
 pd.set_option('display.max_rows', None)

@@ -132,7 +132,8 @@
       <workItem from="1608576024299" duration="5947000" />
       <workItem from="1608660398527" duration="2211000" />
       <workItem from="1608750990850" duration="5604000" />
-      <workItem from="1609867648885" duration="9781000" />
+      <workItem from="1609867648885" duration="10085000" />
+      <workItem from="1609955424389" duration="959000" />
     </task>
     <task id="LOCAL-00001" summary="Parsing Could Lines Using Regex">
       <created>1592262486940</created>
@@ -164,25 +165,25 @@
     <option name="LAST_COMMIT_MESSAGE" value="Parsing Could Lines Using Regex" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="194" key="GridCell.Tab.0.bottom" timestamp="1609876670718">
+    <state width="1877" height="194" key="GridCell.Tab.0.bottom" timestamp="1609956379767">
       <screen x="-1920" y="87" width="1920" height="1040" />
     </state>
-    <state width="1877" height="194" key="GridCell.Tab.0.bottom/-1920.87.1920.1040/0.0.1920.1040@-1920.87.1920.1040" timestamp="1609876670718" />
+    <state width="1877" height="194" key="GridCell.Tab.0.bottom/-1920.87.1920.1040/0.0.1920.1040@-1920.87.1920.1040" timestamp="1609956379767" />
     <state width="1877" height="194" key="GridCell.Tab.0.bottom/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1603832604486" />
-    <state width="1877" height="194" key="GridCell.Tab.0.center" timestamp="1609876670718">
+    <state width="1877" height="194" key="GridCell.Tab.0.center" timestamp="1609956379767">
       <screen x="-1920" y="87" width="1920" height="1040" />
     </state>
-    <state width="1877" height="194" key="GridCell.Tab.0.center/-1920.87.1920.1040/0.0.1920.1040@-1920.87.1920.1040" timestamp="1609876670718" />
+    <state width="1877" height="194" key="GridCell.Tab.0.center/-1920.87.1920.1040/0.0.1920.1040@-1920.87.1920.1040" timestamp="1609956379767" />
     <state width="1877" height="194" key="GridCell.Tab.0.center/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1603832604486" />
-    <state width="1877" height="194" key="GridCell.Tab.0.left" timestamp="1609876670718">
+    <state width="1877" height="194" key="GridCell.Tab.0.left" timestamp="1609956379767">
       <screen x="-1920" y="87" width="1920" height="1040" />
     </state>
-    <state width="1877" height="194" key="GridCell.Tab.0.left/-1920.87.1920.1040/0.0.1920.1040@-1920.87.1920.1040" timestamp="1609876670718" />
+    <state width="1877" height="194" key="GridCell.Tab.0.left/-1920.87.1920.1040/0.0.1920.1040@-1920.87.1920.1040" timestamp="1609956379767" />
     <state width="1877" height="194" key="GridCell.Tab.0.left/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1603832604486" />
-    <state width="1877" height="194" key="GridCell.Tab.0.right" timestamp="1609876670718">
+    <state width="1877" height="194" key="GridCell.Tab.0.right" timestamp="1609956379767">
       <screen x="-1920" y="87" width="1920" height="1040" />
     </state>
-    <state width="1877" height="194" key="GridCell.Tab.0.right/-1920.87.1920.1040/0.0.1920.1040@-1920.87.1920.1040" timestamp="1609876670718" />
+    <state width="1877" height="194" key="GridCell.Tab.0.right/-1920.87.1920.1040/0.0.1920.1040@-1920.87.1920.1040" timestamp="1609956379767" />
     <state width="1877" height="194" key="GridCell.Tab.0.right/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1603832604486" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1609875281361">
       <screen x="-1920" y="87" width="1920" height="1040" />
@@ -210,7 +211,7 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.87.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602010774988" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/IBParserWrapper$FinalPythonWrapperScript.coverage" NAME="FinalPythonWrapperScript Coverage Results" MODIFIED="1609876670714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PythonScript" />
+    <SUITE FILE_PATH="coverage/IBParserWrapper$FinalPythonWrapperScript.coverage" NAME="FinalPythonWrapperScript Coverage Results" MODIFIED="1609956379761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PythonScript" />
     <SUITE FILE_PATH="coverage/IBParserWrapper$PythonWrapperScript.coverage" NAME="FinalPythonWrapperScript Coverage Results" MODIFIED="1608586613443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PythonScript" />
   </component>
 </project>
